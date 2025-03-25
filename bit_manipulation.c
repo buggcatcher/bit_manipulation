@@ -1,26 +1,26 @@
 #include<unistd.h>
 #include<stdio.h>
 
-unsigned char swap_bits(unsigned char octet)
-{
-    unsigned char shift_right = octet >> 4;
-    unsigned char shift_left = octet << 4;
-    unsigned char swapped_bits = shift_right + shift_left;
-    return swapped_bits;
+unsigned char swap_bits(unsigned char octet)                /*     1 byte      */
+{                                                           /*  _____________  */
+    unsigned char shift_right = octet >> 4;                 /*   0100 | 0001   */
+    unsigned char shift_left = octet << 4;                  /*       \ /       */
+    unsigned char swapped_bits = shift_right + shift_left;  /*       / \       */
+    return swapped_bits;                                    /*   0001 | 0100   */
 }
 
 unsigned char reverse_bits(unsigned char octet)
-{
-    int i = 8;               
-    unsigned char res = 0;          
-    while (i > 0)                  
-    {   
-        res = res << 1;             
-        res += octet % 2;          
-        octet = octet >> 1;         
-        i--;                      
-    }
-    return res;                    
+{                    
+    int i = 8; 
+    unsigned char res = 0;       
+    while (i > 0)    
+    {          
+        res = res << 1;                                     /*     1 byte     */
+        res += octet % 2;                                   /*  ____________  */ 
+        octet = octet >> 1;                                 /*   0100  0001   */
+        i--;                                                /*       ||       */      
+    }                                                       /*       \/       */
+    return res;                                             /*   1000  0010   */                    
 }
 
 void print_bits(unsigned char octet)
